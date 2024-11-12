@@ -6,12 +6,14 @@
     <title>Stripe支払処理成功</title>
 </head>
 <body>
-    <h1>支払処理が成功しました！</h1>
-    <h2>5秒後に一覧画面に戻ります。</h2>
+    <h1>支払処理が成功し、カート情報も削除されました！</h1>
+    <h2>3秒後に一覧画面に戻ります。</h2>
     <script>
         setTimeout(() => {
+            localStorage.removeItem('cartList');
             location.href = ("/");
-        }, 5000);
+        }, 3000);
+
     </script>
 </body>
 </html>

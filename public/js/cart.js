@@ -1,11 +1,13 @@
 'use strict';
 
-const lsKey = "cartList";   // カート情報のlocalstrage
+const lsKey = "cartList";   // カート情報のlocalstrageKey
 
+// $(document).ready(function(){})の省略形
 $(() => {
-    cartListDisp()
+    cartListDisp(); // カート一覧表示
 });
 
+// カート一覧の削除ボタン押下時
 $("#cartlist").on("click", "#cartdelete", function() {
     let cartInfoList = localStorage.getItem(lsKey);
     cartInfoList = JSON.parse(cartInfoList);
@@ -16,12 +18,30 @@ $("#cartlist").on("click", "#cartdelete", function() {
     cartListDisp();
 });
 
+// PayPayボタン押下時
 $("#paypay").on('click', () => {
     const price = $("#totalprice").text();
     // console.log(price);
-    location.href = `/paypayqr?price=${price}`;
+    // location.href = `/paypayqr?price=${price}`;
+
+    fetch("/paypay", {
+        method: "POST",
+        headers:  {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            price: price
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // console.log(data);
+        location.href = data.url;
+    })
+    .error(error => console.error('PayPay決済処理でエラー発生しました。', error));
 });
 
+// クレカ決済ボタン押下時
 $("#creditcard").on("click", () => {
     const price = $("#totalprice").text();
     console.log(price);
@@ -44,6 +64,7 @@ $("#creditcard").on("click", () => {
     });
 });
 
+// カート一覧表示処理
 function cartListDisp() {
     let cartInfoList = localStorage.getItem(lsKey);
     cartInfoList = JSON.parse(cartInfoList);

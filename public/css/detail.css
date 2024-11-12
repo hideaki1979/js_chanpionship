@@ -179,3 +179,25 @@ td:last-child {
     width: 80%;
     height: 70%
 }
+
+/* ローディング画面 */
+#loading {
+    transition: all 3s;
+    background-color: #ddd;
+    position: fixed;
+    z-index: 999;
+    inset: 0;
+    display: grid;
+    place-items: center;
+}
+
+.spinner {
+    width: 200px;
+    height: 200px;
+}
+
+/* ローディング完了後、ローディング画面を隠す */
+.loaded {
+    opacity: 0;
+    visibility: hidden;
+}

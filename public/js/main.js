@@ -10,11 +10,10 @@ $("#searchbtn").on("click", async () => {
         alert('書籍名を入力してください');
         return;
     }
-    // https://www.googleapis.com/books/v1/volumes?q=書籍名
-    let url = `${baseUrl}q=${$("#bookname").val()}`;
+        let url = `${baseUrl}q=${$("#bookname").val()}`;
     // urlのクエリパラメータ設定処理
     url = setUrl(url);
-    // console.log(url);
+    console.log(url);
     try {
         await getData(url); // AjaxでAPI呼び出し
         dispPage(1);    // ページング表示
@@ -83,6 +82,7 @@ $("#booklist").on("click", "tr", function() {
     location.href = `/detail?isbn=${isbn}`;
 })
 
+// GoogleBooksAPIのクエリパラメータ設定処理
 function setUrl(url){
     ($("#langcheck").prop("checked")) && (url += `&langRestrict=ja`);
     ($("#orderbycheck").prop("checked")) && (url += `&orderBy=newest`);
@@ -98,6 +98,7 @@ function setUrl(url){
     return url;
 };
 
+// GoogleBooksAPI呼出、一覧のHTML編集表示
 function getData(url) {
     return new Promise((resolve, reject) =>{
         $.ajax({
@@ -147,6 +148,7 @@ function getData(url) {
     });
 };
 
+// ページング表示処理
 function dispPage(targetPage) {
     // const totalCnt = parseInt($("#totalcnt").text());
     // const maxPage = Math.ceil(totalCnt / 10);

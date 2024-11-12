@@ -8,7 +8,6 @@ require("dotenv").config(); // 環境変数取得
 const paypaySDK = require("@paypayopa/paypayopa-sdk-node");
 const { v4: uuidv4 } = require("uuid");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-// console.log(process.env);
 const app = express();
 const port = 3000;  // ポート番号
 
@@ -30,32 +29,33 @@ app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
+// ejs使う際のおまじない
 app.set("view engine", "ejs");
 
+// 書籍一覧への画面遷移
 app.get("/", (req, res) => {
     // createQR();
     // res.send('HTTPS 接続Test成功！');
     res.render('index.ejs');
 });
 
+// 書籍詳細画面への画面遷移
 app.get("/detail", (req, res) => {
     // console.log('detail get 通過！')
     const isbn = req.params.isbn;
     res.render('detail.ejs');
 });
 
-app.get("/paypayqr", async(req, res) => {
-    let priceStr = req.query.price;
+// paypay決済API、決済画面へリダイレクト
+app.post("/paypay", async(req, res) => {
+    let priceStr = req.body.price;
     // console.log(priceStr);
     const price = parseInt(priceStr.replace(/[,円]/g, ""), 10);
-    // console.log(price);
-    // console.log('paypayqr通過！');
     const response = await createQR(price);
-    // console.log(response.data.url);
-    // res.redirect('https://www.yahoo.co.jp/');
-    res.redirect(response.data.url);
+    res.json({url: response.data.url});
 });
 
+// クレジットカード決済処理
 app.post("/creditcard", async(req, res) => {
     let priceStr = req.body.price;
     const title = req.body.title;
@@ -87,25 +87,28 @@ app.post("/creditcard", async(req, res) => {
     }
 });
 
+// カート一覧画面遷移
 app.get("/cart", (req, res) => {
     // console.log("カート画面へ遷移！");
     res.render("cart.ejs");
 });
 
+// クレカ決済成功画面遷移
 app.get('/success', (req, res) => {
     res.render("success.ejs");
 });
 
+// クレカ決済キャンセル画面遷移
 app.get('/cancel', (req, res) => {
     res.render('cancel.ejs')
 });
 
 // HTTPS接続
-https.createServer(sslCert, app).listen(port, () => {
+https.createServer(sslCert, app).listen(port, async() => {
     console.log("HTTPS起動成功！")
 });
 
-// paypayQRコード決済作成
+// paypayQRコード決済API呼出
 async function createQR(price) {
     const uniquePaymentId = uuidv4();   // 取引IDはユニークの必要があるので、UUIDにてユニークIDを生成
     let resQR;
@@ -133,3 +136,4 @@ async function createQR(price) {
         console.error('QRコード生成エラー：', error);
     }
 };
+ 
