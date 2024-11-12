@@ -1,0 +1,181 @@
+@charset "utf-8";
+/* 全体にborder-box(heightとwidthにpaddingとmarginを含む)指定をする。 */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;    /* 文字サイズを正しく反映 */
+}
+
+body {
+    /* GoogleFonts */
+    /* padding: 0;
+    margin: 0; */
+    width: 100%;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 400;
+    background-color: rgb(252, 252, 246);;
+}
+
+.head-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 1.5em auto;
+}
+
+#listback,
+#cartlist,
+#creditcard {
+    display: inline-block;
+    padding: 1em;
+    margin-right: 1em;
+    text-decoration: none;
+    font-size: .85em;
+    max-width: fit-content;
+    border-radius: 25px;
+}
+
+#listback,
+#cartlist {
+    background-color: lightgray;
+    color: black;
+    box-shadow: 0 5px 5px rgb(133, 132, 132);
+}
+
+#paypay {
+    display: inline-block;
+    padding: .5em;
+    margin-right: 1em;
+    text-decoration: none;
+    vertical-align: bottom; /* ロゴ画像入れると高さが揃わないのでこれ入れたら揃いました */
+    font-size: .85em;
+    background-color: rgb(255, 1, 1);
+    box-shadow: 0 5px 5px rgb(160, 0, 0);
+    border-radius: 25px;
+}
+
+#creditcard {
+    background-color: blue;
+    color: white;
+    box-shadow: 0 5px 5px rgb(0, 0, 150);
+}
+
+#paypaylogo {
+    width: 100px;
+    height: 25px;
+    object-fit: contain;
+}
+
+#cart {
+    margin-top: 1em;
+    margin-left: 2em;
+    padding: .5em 1em;
+    font-size: .8em;
+    max-width: fit-content;
+    border-radius: 25px;
+    box-shadow: 0 3px 3px rgb(154, 152, 152);
+    cursor: pointer;
+}
+
+.fa-cart-plus,
+.fa-table-list,
+.fa-credit-card,
+.fa-magnifying-glass {
+    margin-right: .5em;
+}
+
+h1 {
+    font-size: 1.5em;
+    padding-left: 40px;
+    padding-top: 7px;
+    background: url(../images/MirrorManBookStorelogo3.svg) no-repeat left top;
+    font-weight: bold;
+}
+
+.maininfo {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#bookimg {
+    width: 13%;
+    height: 13%;
+    object-fit: cover;
+}
+
+#bookinfo {
+    margin-left: 2em;
+    font-size: .85em;
+}
+
+th {
+    text-align: center;
+    color: white;
+    background: linear-gradient(#829ebc,#225588);
+    border-bottom: 1px solid #3c6690;
+    box-shadow: 0 1px 1px rgba(255,255,255,0.3) inset;
+    vertical-align: middle;
+    min-width: 100px;
+}
+
+tr{
+    background-color: rgb(214, 243, 252);
+}
+
+
+th {
+    border-radius: 20px 0 0 0;
+}
+
+#title,
+#publisher,
+#author,
+#date,
+#page,
+#price {
+    text-align: left;
+    vertical-align: middle;
+    border-top: 2px solid #a8b7c5;
+    border-left: 2px solid #a8b7c5;
+    border-bottom: 2px solid #a8b7c5;
+    box-shadow: 0px -3px 5px 1px #eee inset;
+    min-width: 300px;
+}
+
+td:last-child {
+    padding: 10px;
+    line-height: 1.5;
+    border-right: 2px solid #a8b7c5
+}
+
+.desc-container {
+    width: 80%;
+    margin-top: 1em;
+    margin-left: 7em;
+
+}
+
+.desctitle {
+    font-size: 1.2em;
+    margin-bottom: .5em;
+}
+
+#description {
+    text-align: left;
+    line-height: 1.3;
+    font-size: .85em;
+    margin-bottom: 3em;
+}
+
+#viewer {
+    margin: 0 auto;
+    width: 600px;
+    height: 500px;
+}
+
+#viewer img {
+    width: 80%;
+    height: 70%
+}

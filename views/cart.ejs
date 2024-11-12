@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts指定はreset.cssよりも前に指定しないと適用されない -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/cart.css">
+    <link rel="shortcut icon" href="/images/MirrorManBookStorelogo3.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/3893656067.js" crossorigin="anonymous"></script>
+    <title>MIRRORMAN BOOKSTORE</title>
+</head>
+<body>
+    <header>
+        <div class="head-container">
+            <h1>MIRRORMAN BOOKSTORE</h1>
+            <div class="link-container">
+                <a href="/" id="listback"><i class="fa-solid fa-magnifying-glass"></i>書籍検索へ</a>
+                <a href="#" id="paypay"><img src="/images/paypay.jpg" alt="paypayのロゴ" id="paypaylogo"></a>
+                <a href="#" id="creditcard"><i class="fa-solid fa-credit-card"></i>クレカで購入</a>
+            </div>
+        </div>
+    </header>
+    <section id="cartinfolist">
+        <div class="total-container">
+            <label>合計金額：<span id="totalprice"></span>円</label>
+        </div>
+        <table id="cartlist"></table>
+    </section>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/js/cart.js"></script>
+</body>
+</html>

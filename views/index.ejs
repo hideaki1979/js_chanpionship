@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts指定はreset.cssよりも前に指定しないと適用されない -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/MirrorManBookStorelogo3.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/3893656067.js" crossorigin="anonymous"></script>
+    <title>MIRRORMAN BOOKSTORE</title>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1 class="title">MIRRORMAN BOOKSTORE</h1>
+            <div class="link-container">
+                <a href="/cart" id="cartlist"><i class="fa-solid fa-table-list"></i>カート一覧へ</a>
+            </div>
+        </div>
+        
+    </header>
+    <search id="search-area">
+        <form action="#" id="searchform">
+            <input type="text" id="bookname" placeholder="書籍名を入力">
+            <img src="/images/search.svg" alt="検索ボタン" id="searchbtn">
+            <label id="langarea">
+                <input type="checkbox" id="langcheck">
+                <span class="langtext">日本語のみ</span>
+            </label>
+            <label id="orderbyarea">
+                <input type="checkbox" id="orderbycheck">
+                <span class="orderbytext">最新順に並び替え</span>
+            </label>
+            <label id="printtype">
+                <select id="printselect">
+                    <option value="all">全て</option>
+                    <option value="books">書籍のみ</option>
+                    <option value="magazines">雑誌のみ</option>
+                </select>
+            </label>
+        </form>
+        <section id="search-result">
+            <div class="cntpage-container">
+                <label>取得件数：<span id="totalcnt"></span>件</label>
+                <ol id="pagenation"></ol>
+            </div>
+            
+            <table id="booklist"></table>
+        </section>
+    </search>
+    
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

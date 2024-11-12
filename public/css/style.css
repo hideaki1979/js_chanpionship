@@ -1,0 +1,236 @@
+@charset "utf-8";
+/* 全体にborder-box(heightとwidthにpaddingとmarginを含む)指定をする。 */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;    /* 文字サイズを正しく反映 */
+}
+
+body {
+    /* GoogleFonts */
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 400;
+    background-color: rgb(252, 252, 246);
+}
+
+header {
+    margin: 3vh 1.1em;
+}
+
+.header-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1em
+}
+
+.title {
+    font-size: 1.5em;
+    padding-left: 30px;
+    background: url(../images/MirrorManBookStorelogo3.svg) no-repeat;
+    font-weight: bold;
+}
+
+#cartlist {
+    display: inline-block;
+    text-decoration: none;
+    padding: .65em;
+    font-size: .8em;
+    max-width: fit-content;
+    border-radius: 20px;
+    background-color: lightgray;
+    color: black;
+    box-shadow: 0 5px 5px rgb(133, 132, 132);
+}
+
+.fa-table-list {
+    margin-right: .5em;
+}
+
+#searchform {
+    margin-left: 2em;
+    margin-bottom: 2em;
+}
+
+#bookname {
+    width: 15em;
+    height: 5.5vh;
+    border: none;
+    background-color: #f2f2f2;
+    font-size: 1em;
+    outline: none;
+}
+
+#bookname::placeholder {
+    color: #777777;
+}
+
+#searchbtn {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #f2f2f2;
+}
+
+#langarea,
+#orderbyarea {
+    margin-left: 1rem;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#printtype {
+    margin-left: 1.5em;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+#printtype::after {
+    position: absolute;
+    right: 5px;
+    width: 10px;
+    height: 8px;
+    background-color: #7e7a7a;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    content: '';
+    pointer-events: none;
+}
+
+#printtype select {
+    appearance: none;
+    min-width: 130px;
+    height: 1.8em;
+    border: 1px solid #a19191;
+    border-radius: 3px;
+    background-color: #fff;
+    color: black;
+    font-size: .8em;
+    cursor: pointer;
+    padding-left: .5em;
+}
+
+.cntpage-container {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2vh;
+}
+
+.nodataerr {
+    font-size: 3em;
+    color: red;
+}
+
+#pagenation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0 10px;
+}
+
+#pagenation a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2em;
+    height: 2em;
+    background-color: #f2f2f2;
+    border-radius: 25px;
+    color: #318db4;
+}
+
+#pagenation a:not(:hover) {
+    text-decoration: none;
+}
+
+#pagenation .current a {
+    background-color: #318db4;
+    color: #fff;
+    pointer-events: none;
+}
+
+#search-result {
+    position: relative;
+    z-index: 10;
+    margin: 0 2em;
+}
+
+#booklist {
+    width: 95%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+th {
+    text-align: center;
+    color: white;
+    background: linear-gradient(#829ebc,#225588);
+    border-left: 1px solid #3c6690;
+    border-top: 1px solid #3c6690;
+    border-bottom: 1px solid #3c6690;
+    box-shadow: 0 1px 1px rgba(255,255,255,0.3) inset;
+    font-size: 1em;
+}
+
+/* 一覧の偶数行 */
+tr:nth-of-type(even){
+    background-color: rgb(214, 243, 252);
+}
+
+/* 一覧で3行目以降の奇数行（1行目はタイトルのため） */
+tr:nth-of-type(odd):nth-of-type(n+3) {
+    background-color: #fff;
+}
+
+
+th:first-child {
+    border-radius: 5px 0 0 0;
+}
+
+th:last-child {
+    border-radius: 0 5px 0 0;
+}
+
+.bookcover {
+    width: 10%;
+}
+.booktitle {
+    width: 15%;
+}
+.releasedate {
+    width: 10%;
+}
+.bookauthor {
+    width: 10%;
+}
+.bookdesc {
+    width: 55%;
+}
+
+td {
+    text-align: center;
+    vertical-align: middle;
+    border-left: 2px solid #a8b7c5;
+    border-bottom: 2px solid #a8b7c5;
+    box-shadow: 0px -3px 5px 1px #eee inset;
+    font-size: .85rem;
+}
+
+tr:hover {
+    cursor: pointer;
+}
+
+td:last-child {
+    padding: 10px;
+    line-height: 1.5;
+    border-right: 2px solid #a8b7c5;
+    text-align: left;
+    white-space: pre-wrap;  /* 改行を保持 */
+}
