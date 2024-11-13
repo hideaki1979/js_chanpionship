@@ -1,7 +1,9 @@
 'use strict';
 
+import { googleApiKey } from "./config.js";
+
 // GoogleBooksAPIをISBN番号で呼び出し
-const baseUrl = 'https://www.googleapis.com/books/v1/volumes?q=isbn:';
+const baseUrl = 'https://www.googleapis.com/books/v1/volumes?q=isbn';
 let isbn;
 const lsKey = "cartList";   // カート情報のlocalstrage
 const loading = document.querySelector("#loading");
@@ -82,7 +84,7 @@ function initialize(){
     // URLSearchParamsでクエリパラメータ以降の文字列を取得して、getでisbnの値を取得
     const urlQuery = new URLSearchParams(location.search);
     isbn = urlQuery.get('isbn');
-    const url = baseUrl + isbn;
+    const url = baseUrl + isbn + `&key=${googleApiKey}`;
     // console.log(url);
     getBookdata(url);   // GoogleBooksAPI呼出（ISBN番号指定）
 

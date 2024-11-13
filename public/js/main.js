@@ -1,5 +1,7 @@
 'use strict';
 
+import { googleApiKey } from "./config.js";
+
 // Google Books APIのベースURL
 const baseUrl = 'https://www.googleapis.com/books/v1/volumes?';
 let html = "";
@@ -30,6 +32,7 @@ $('#pagenation').on('click', 'a', async function() {
     const startIndex = Math.floor((($(this).text() - 1) * 10));
     // console.log(startIndex);
     let url = `${baseUrl}q=${$("#bookname").val()}&startIndex=${startIndex}`;
+    url += `&key=${googleApiKey}`;
     // url = setUrl(url);
     console.log(url);
     const targetPage = parseInt($(this).text());
@@ -67,6 +70,8 @@ $('#pagenation').on('click', '.next', async function(){
     const startIndex = Math.floor(((targetPage - 1) * 10));
     let url = `${baseUrl}q=${$("#bookname").val()}&startIndex=${startIndex}`;
     url = setUrl(url);
+    
+    console.log(url);
     try {
         await getData(url);
         dispPage(targetPage);
@@ -95,6 +100,7 @@ function setUrl(url){
             url += `&printType=magazines`;
             break;
     }
+    url = url + `&key=${googleApiKey}`;
     return url;
 };
 
