@@ -1,18 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Fonts指定はreset.cssよりも前に指定しないと適用されない -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/reset.css">
+    <%- include("commonhead") %>
     <link rel="stylesheet" href="/css/detail.css">
-    <link rel="shortcut icon" href="/images/MirrorManBookStorelogo3.png" type="image/x-icon">
-    <script src="https://kit.fontawesome.com/3893656067.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
-    <title>MIRRORMAN BOOKSTORE</title>
 </head>
 <body>
     <div id="loading">
@@ -24,8 +15,8 @@
             <div class="link-container">
                 <a href="/" id="listback"><i class="fa-solid fa-magnifying-glass"></i>書籍検索へ</a>
                 <a href="/cart" id="cartlist"><i class="fa-solid fa-table-list"></i>カート一覧へ</a>
-                <a href="#" id="paypay"><img src="/images/paypay.jpg" alt="paypayのロゴ" id="paypaylogo"></a>
-                <a href="#" id="creditcard"><i class="fa-solid fa-credit-card"></i>クレカで購入</a>
+                <!-- <a href="#" id="paypay"><img src="/images/paypay.jpg" alt="paypayのロゴ" id="paypaylogo"></a>
+                <a href="#" id="creditcard"><i class="fa-solid fa-credit-card"></i>クレカで購入</a> -->
             </div>
         </div>
     </header>

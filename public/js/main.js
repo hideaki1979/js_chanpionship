@@ -1,10 +1,23 @@
 'use strict';
 
 import { googleApiKey } from "./config.js";
+import { connectWS } from "./ws.js";
 
 // Google Books APIのベースURL
 const baseUrl = 'https://www.googleapis.com/books/v1/volumes?';
+const lsKey = "cartList";   // カート情報のlocalstrageKey
 let html = "";
+
+// WebSocketサーバからのメッセージ受信（決済処理完了）
+// メッセージ受信後にカート情報削除（LocalStorageデータ削除）
+// メッセージ通知用のコールバック関数を呼び出す
+connectWS((data) => {
+    // console.log(`WebSocketサーバからのコールバックメッセージ受信しました。：${JSON.stringify(data)}`);
+    if(data.status === "COMPLETED") {
+        localStorage.removeItem(lsKey);
+        alert("PayPay決済処理が完了し、カート情報が削除されました。");
+    }
+});
 
 // 検索ボタン押下（書籍一覧出力）javascriptkime
 $("#searchbtn").on("click", async () => {
@@ -32,8 +45,8 @@ $('#pagenation').on('click', 'a', async function() {
     const startIndex = Math.floor((($(this).text() - 1) * 10));
     // console.log(startIndex);
     let url = `${baseUrl}q=${$("#bookname").val()}&startIndex=${startIndex}`;
-    url += `&key=${googleApiKey}`;
-    // url = setUrl(url);
+    // url += `&key=${googleApiKey}`;
+    url = setUrl(url);
     console.log(url);
     const targetPage = parseInt($(this).text());
     console.log(targetPage);
